@@ -1,20 +1,21 @@
 package com.example.springbootmasterclass.customer;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.List;
 
-@Component
+@Service
 public class CustomerService {
 
-    public String getCustomerById(long id) {
-        return getDb().get(id);
+    private final CustomerRepo repo;
+
+    public CustomerService(@Qualifier("fake-repository") CustomerRepo repo) {
+        this.repo = repo;
     }
 
-    private Map<Long, String> getDb() {
-        return Map.ofEntries(
-                Map.entry(1L, "James Bond")
-        );
+    public List<Customer> getCustomers() {
+        return repo.getCustomers();
     }
 
 }
