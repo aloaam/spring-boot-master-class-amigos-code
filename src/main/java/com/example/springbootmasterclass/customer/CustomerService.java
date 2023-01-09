@@ -1,5 +1,6 @@
 package com.example.springbootmasterclass.customer;
 
+import com.example.springbootmasterclass.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +19,12 @@ public class CustomerService {
         return repo.getCustomers();
     }
 
+    public Customer getCustomer(long customerId) {
+        return repo.getCustomers()
+                .stream()
+                .filter(customer -> customer.id() == customerId)
+                .findFirst()
+                .orElseThrow(() ->
+                        new NotFoundException("Customer id:  " + customerId + "  does not exist."));
+    }
 }

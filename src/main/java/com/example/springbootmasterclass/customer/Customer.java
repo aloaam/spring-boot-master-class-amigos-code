@@ -1,12 +1,12 @@
 package com.example.springbootmasterclass.customer;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-public record Customer(long id, String name) {
-
-    @Override
-    @JsonProperty("surname")
-    public String name() {
-        return name;
-    }
+public record Customer(
+        @NotNull(message = "Please enter id") long id,
+        @NotBlank String name,
+        @NotBlank @Email String email){
 }
+

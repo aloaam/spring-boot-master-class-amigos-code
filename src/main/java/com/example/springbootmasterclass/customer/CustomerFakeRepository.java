@@ -11,6 +11,6 @@ public class CustomerFakeRepository implements CustomerRepo {
 
     @Override
     public List<Customer> getCustomers() {
-        return Collections.singletonList(new Customer(1L, "James Bond"));
+        return Collections.singletonList(new Customer(1L, "James Bond", "email@gmail.com"));
     }
 }

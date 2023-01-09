@@ -13,6 +13,6 @@ public class CustomerRepository implements CustomerRepo {
 
     @Override
     public List<Customer> getCustomers() {
-        return Collections.singletonList(new Customer(2L, "Needs to be implemented"));
+        return Collections.singletonList(new Customer(2L, "Needs to be implemented", "to be implemented"));
     }
 }
